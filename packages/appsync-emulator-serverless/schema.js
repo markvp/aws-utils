@@ -349,9 +349,9 @@ const generateResolvers = (cwd, config, configs) => {
       }
       const source = dataSourceByName[dataSource];
       const pathing = {
-        requestPath: path.join(mappingTemplates, request),
+        requestPath: path.join(mappingTemplates, request || `${type}.${field}.request.vtl`),
         dataLoaderResolver: generateDataLoaderResolver(source, configs),
-        responsePath: path.join(mappingTemplates, response),
+        responsePath: path.join(mappingTemplates, response || `${type}.${field}.response.vtl`),
       };
       const resolver =
         type === 'Subscription'
